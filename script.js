@@ -69,6 +69,11 @@ const enterBtn = document.getElementById('enter-btn');
 const musicCheckbox = document.getElementById('music-checkbox');
 const bgMusic = document.getElementById('bg-music');
 const hoverLabel = document.getElementById('hover-label');
+const progressCounter = document.getElementById('progress-counter');
+const visitedCountEl = document.getElementById('visited-count');
+const totalCountEl = document.getElementById('total-count');
+
+if (totalCountEl) totalCountEl.textContent = memories.length;
 
 const memoryModal = document.getElementById('memory-modal');
 const memoryTitle = document.getElementById('memory-title');
@@ -430,6 +435,13 @@ function openCard(planet) {
         // Mark as visited
         state.visitedPlanets.add(planet.userData.id);
 
+        if (visitedCountEl) {
+            visitedCountEl.textContent = state.visitedPlanets.size;
+            if (state.visitedPlanets.size === memories.length) {
+                progressCounter.innerHTML = '<span class="glow-text-pink">Birthday Star Unlocked! ✨</span>';
+            }
+        }
+
         // Change glow color to indicate visited (white glow)
         if (planet.children.length > 0) {
             planet.children[0].material.color.setHex(0xffffff);
@@ -576,6 +588,7 @@ enterBtn.addEventListener('click', () => {
     landingPage.style.opacity = '0';
     setTimeout(() => {
         landingPage.classList.add('hidden');
+        if (progressCounter) progressCounter.classList.remove('hidden');
     }, 1000);
 
     // Handle Music
