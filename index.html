@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Universe</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- External Libraries -->
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <!-- GSAP for smooth animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  </head>
+  <body>
+    <!-- Three.js Canvas Container -->
+    <div id="canvas-container"></div>
+
+    <!-- UI Overlay for Labels -->
+    <div id="hover-label" class="hidden">Planet Label</div>
+
+    <!-- Landing Page -->
+    <div id="landing-page" class="overlay flex-center">
+      <div class="glass-panel text-center pulse">
+        <h1 class="title">Welcome to Our Universe</h1>
+        <p class="subtitle">Every star here holds a memory of us.</p>
+        <button id="enter-btn" class="glow-btn mt-4">Enter the Universe</button>
+
+        <div class="music-toggle mt-4">
+          <label for="music-checkbox" class="music-label">
+            <input type="checkbox" id="music-checkbox" />
+            <span class="music-text">🎵 Play Romantic Music</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Memory Card Modal -->
+    <div id="memory-modal" class="overlay flex-center hidden">
+      <div class="glass-panel memory-card">
+        <h2 id="memory-title" class="title-small">Memory Title</h2>
+        <div id="memory-photo" class="photo-placeholder mt-2">
+          <span>Memory Photo</span>
+        </div>
+        <p id="memory-text" class="body-text mt-2">
+          Memory message goes here...
+        </p>
+        <button id="close-memory-btn" class="glow-btn mt-4">
+          Return to Galaxy
+        </button>
+      </div>
+    </div>
+
+    <!-- Birthday Surprise Modal -->
+    <div id="birthday-modal" class="overlay flex-center hidden">
+      <div class="glass-panel birthday-card text-center">
+        <h1 class="title glow-text-pink">Happy Birthday ❤️</h1>
+        <div class="birthday-photo-placeholder mt-2 mx-auto">
+          <span>❤️</span>
+        </div>
+        <p class="body-text mt-4">
+          Out of all the stars in this universe, you are the one that lights up
+          my world. Every moment with you is a memory I treasure. Today is your
+          day, and I hope it is as beautiful as you are.
+        </p>
+        <button id="close-birthday-btn" class="glow-btn mt-4">Close</button>
+      </div>
+    </div>
+
+    <!-- Background Music Audio Element -->
+    <audio id="bg-music" loop>
+      <source src="assets/music/bg-music.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- Main Script -->
+    <script src="script.js"></script>
+  </body>
+</html>

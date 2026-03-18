@@ -1,0 +1,237 @@
+/* Base Reset and Utility */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    overflow: hidden; /* Prevent scrolling, Three.js canvas takes full screen */
+    background: #050510; /* Deep space black/blue */
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .title, .title-small {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+}
+
+.hidden {
+    display: none !important;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-2 { margin-top: 1rem; }
+.mt-4 { margin-top: 2rem; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+
+/* Canvas Container */
+#canvas-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1; /* Below UI */
+}
+
+/* UI Overlays */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10; /* Above Canvas */
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+    transition: opacity 1s ease;
+}
+
+/* Glassmorphism Panels */
+.glass-panel {
+    background: rgba(20, 15, 40, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 3rem;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(120, 80, 200, 0.2);
+    max-width: 500px;
+    width: 90%;
+}
+
+/* Typography Specifics */
+.title {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(224, 195, 252, 0.3);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #b0b0d0;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+.title-small {
+    font-size: 2rem;
+    color: #f0e6ff;
+    margin-bottom: 1rem;
+}
+
+.body-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #e0e0ea;
+}
+
+.glow-text-pink {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(255, 154, 158, 0.5);
+}
+
+/* Buttons */
+.glow-btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 12px 28px;
+    color: white;
+    background: linear-gradient(45deg, #6b21a8, #9333ea);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(147, 51, 234, 0.5);
+}
+
+.glow-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 0 25px rgba(147, 51, 234, 0.8), inset 0 0 10px rgba(255,255,255,0.3);
+}
+
+.glow-btn:active {
+    transform: translateY(1px);
+}
+
+/* Music Toggle */
+.music-toggle {
+    font-size: 0.9rem;
+    color: #a0a0c0;
+    cursor: pointer;
+}
+.music-label {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.music-label input {
+    accent-color: #9333ea;
+}
+
+/* Hover Label */
+#hover-label {
+    position: absolute;
+    background: rgba(20, 15, 40, 0.8);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(147, 51, 234, 0.5);
+    padding: 8px 16px;
+    border-radius: 8px;
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    pointer-events: none; /* Let mouse pass through to canvas */
+    transform: translate(-50%, -150%); /* Center horizontally, above mouse */
+    z-index: 5;
+    transition: opacity 0.2s, transform 0.1s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    white-space: nowrap;
+}
+
+/* Card Placeholders */
+.photo-placeholder {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.1));
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #8080a0;
+    font-style: italic;
+    border: 1px dashed rgba(255,255,255,0.2);
+}
+
+.birthday-photo-placeholder {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    box-shadow: 0 0 30px rgba(255, 154, 158, 0.6);
+    animation: pulseGlow 2s infinite alternate;
+}
+
+/* Animations */
+@keyframes pulseGlow {
+    from {
+        box-shadow: 0 0 20px rgba(255, 154, 158, 0.4);
+    }
+    to {
+        box-shadow: 0 0 40px rgba(255, 154, 158, 0.8), 0 0 100px rgba(255,154,158,0.3);
+    }
+}
+
+.pulse {
+    animation: subtleFloat 4s ease-in-out infinite;
+}
+
+@keyframes subtleFloat {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+    .glass-panel {
+        padding: 2rem;
+    }
+    .title {
+        font-size: 2.2rem;
+    }
+    .title-small {
+        font-size: 1.5rem;
+    }
+    .body-text {
+        font-size: 1rem;
+    }
+    .photo-placeholder {
+        height: 150px;
+    }
+}
