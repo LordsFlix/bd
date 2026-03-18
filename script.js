@@ -23,7 +23,7 @@ const memories = [
     {
         id: "planet-3",
         title: "Our Funniest Moment",
-        message: "I can still hear your laugh echoing in my mind. Your smile is my favorite thing in the world.",
+        message: "I can still feel your laugh echoing in my mind. Your smile is my favorite thing in the world.",
         color: 0xffdac1, // Soft orange/peach
         size: 1.0,
         distance: 22,
