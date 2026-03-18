@@ -142,6 +142,7 @@ h3,
 
 /* Buttons */
 .glow-btn {
+    width: 100%;
     font-family: 'Inter', sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
